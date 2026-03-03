@@ -1,9 +1,10 @@
 """FastAPI application with all route definitions for RubricLens."""
 
 import json
-from fastapi import FastAPI, HTTPException, UploadFile, File, Form
+import traceback
+from fastapi import FastAPI, HTTPException, UploadFile, File, Form, Request
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import Response, FileResponse
+from fastapi.responses import Response, FileResponse, JSONResponse
 from pydantic import BaseModel
 from typing import Optional
 
@@ -37,6 +38,16 @@ from backend.seed_data import load_demo_rubric, load_rubric_from_json
 import os
 
 app = FastAPI(title="RubricLens", version="1.0.0")
+
+
+@app.exception_handler(Exception)
+async def global_exception_handler(request: Request, exc: Exception):
+    """Catch unhandled exceptions and return a clean JSON error."""
+    return JSONResponse(
+        status_code=500,
+        content={"detail": "An internal error occurred. Please try again."},
+    )
+
 
 # Serve frontend static files
 FRONTEND_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "frontend")

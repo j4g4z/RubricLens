@@ -235,6 +235,11 @@ document.getElementById('btn-save-rubric').addEventListener('click', async () =>
         let rubricId;
 
         if (state.editingRubricId) {
+            // Delete old criteria before re-adding
+            const oldRubric = await apiFetch(`/rubrics/${state.editingRubricId}`);
+            for (const c of oldRubric.criteria) {
+                await apiFetch(`/criteria/${c.criterion_id}`, { method: 'DELETE' });
+            }
             await apiFetch(`/rubrics/${state.editingRubricId}`, {
                 method: 'PUT',
                 body: JSON.stringify({ title, total_marks: totalMarks }),
