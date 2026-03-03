@@ -1,0 +1,647 @@
+/* RubricLens — Main Stylesheet */
+
+:root {
+    --dark: #1a1a2e;
+    --navy: #16213e;
+    --blue: #0f3460;
+    --accent-red: #e94560;
+    --green: #00b894;
+    --amber: #fdcb6e;
+    --white: #f5f5f5;
+    --light-grey: #e0e0e0;
+    --mid-grey: #888;
+    --text: #1a1a2e;
+    --bg: #fafafa;
+    --card-bg: #ffffff;
+    --border: #ddd;
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+/* ---------- Layout ---------- */
+
+.app-header {
+    background: var(--dark);
+    color: var(--white);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.app-header h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.app-header .tagline {
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ---------- Navigation ---------- */
+
+.nav-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 1.5rem;
+}
+
+.nav-tab {
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 0.95rem;
+    color: var(--mid-grey);
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+}
+
+.nav-tab:hover {
+    color: var(--text);
+}
+
+.nav-tab.active {
+    color: var(--blue);
+    border-bottom-color: var(--blue);
+    font-weight: 600;
+}
+
+/* ---------- Views ---------- */
+
+.view {
+    display: none;
+}
+
+.view.active {
+    display: block;
+}
+
+/* ---------- Cards ---------- */
+
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.card-meta {
+    font-size: 0.85rem;
+    color: var(--mid-grey);
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.55rem 1.1rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-primary {
+    background: var(--blue);
+    color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: var(--navy);
+}
+
+.btn-success {
+    background: var(--green);
+    color: white;
+}
+
+.btn-success:hover:not(:disabled) {
+    background: #00a884;
+}
+
+.btn-danger {
+    background: var(--accent-red);
+    color: white;
+}
+
+.btn-danger:hover:not(:disabled) {
+    background: #d63851;
+}
+
+.btn-secondary {
+    background: var(--light-grey);
+    color: var(--text);
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background: #ccc;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+}
+
+.btn-outline:hover:not(:disabled) {
+    background: var(--light-grey);
+}
+
+.btn-sm {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.8rem;
+}
+
+.btn-group {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+/* ---------- Forms ---------- */
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 0.35rem;
+    color: var(--text);
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: border-color 0.2s;
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(15, 52, 96, 0.1);
+}
+
+.form-textarea {
+    min-height: 200px;
+    resize: vertical;
+}
+
+/* ---------- Rubric List ---------- */
+
+.rubric-list {
+    list-style: none;
+}
+
+.rubric-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.rubric-item:hover {
+    border-color: var(--blue);
+    box-shadow: 0 2px 8px rgba(15, 52, 96, 0.1);
+}
+
+.rubric-item .rubric-info h3 {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.rubric-item .rubric-info span {
+    font-size: 0.85rem;
+    color: var(--mid-grey);
+}
+
+/* ---------- Criteria Editor ---------- */
+
+.criterion-item {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    background: var(--card-bg);
+}
+
+.criterion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.criterion-header h4 {
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.criterion-details {
+    display: none;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+}
+
+.criterion-details.expanded {
+    display: block;
+}
+
+.descriptor-item {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+    padding: 0.4rem;
+    background: var(--bg);
+    border-radius: 4px;
+}
+
+.descriptor-item .level-num {
+    font-weight: 600;
+    min-width: 1.5rem;
+    color: var(--blue);
+}
+
+/* ---------- Status Badges ---------- */
+
+.status-badge {
+    display: inline-block;
+    padding: 0.2rem 0.7rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-missing {
+    background: var(--accent-red);
+    color: white;
+}
+
+.status-partial {
+    background: var(--amber);
+    color: var(--dark);
+}
+
+.status-strong {
+    background: var(--green);
+    color: white;
+}
+
+/* ---------- Report View ---------- */
+
+.summary-bar {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: 1.25rem;
+    background: var(--navy);
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.summary-stat {
+    text-align: center;
+    min-width: 80px;
+}
+
+.summary-stat .stat-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.summary-stat .stat-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+.priorities-box {
+    background: #fff9e6;
+    border: 1px solid var(--amber);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.priorities-box h3 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    color: var(--dark);
+}
+
+.priority-item {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(253, 203, 110, 0.3);
+}
+
+.priority-item:last-child {
+    border-bottom: none;
+}
+
+/* ---------- Evidence Drill-down ---------- */
+
+.report-criterion {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+}
+
+.report-criterion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.report-criterion-header:hover {
+    background: var(--bg);
+}
+
+.report-criterion-header .criterion-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.report-criterion-header .marks {
+    font-size: 0.85rem;
+    color: var(--mid-grey);
+}
+
+.strength-bar {
+    width: 80px;
+    height: 6px;
+    background: var(--light-grey);
+    border-radius: 3px;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.strength-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.3s;
+}
+
+.evidence-panel {
+    display: none;
+    padding: 1rem 1.25rem;
+    border-top: 1px solid var(--border);
+    background: var(--bg);
+}
+
+.evidence-panel.expanded {
+    display: block;
+}
+
+.evidence-excerpt {
+    background: white;
+    border-left: 3px solid var(--blue);
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    border-radius: 0 4px 4px 0;
+    font-size: 0.9rem;
+}
+
+.evidence-score {
+    font-size: 0.8rem;
+    color: var(--mid-grey);
+    margin-top: 0.25rem;
+}
+
+.no-evidence {
+    color: var(--accent-red);
+    font-style: italic;
+    padding: 0.75rem;
+}
+
+.rationale-box {
+    margin-bottom: 0.75rem;
+}
+
+.rationale-box h4,
+.next-action-box h4 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: var(--mid-grey);
+    margin-bottom: 0.3rem;
+}
+
+.next-action-box {
+    margin-bottom: 0.75rem;
+}
+
+/* ---------- Draft Input ---------- */
+
+.word-count {
+    text-align: right;
+    font-size: 0.85rem;
+    color: var(--mid-grey);
+    margin-top: 0.25rem;
+}
+
+.file-upload-area {
+    border: 2px dashed var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    transition: border-color 0.2s;
+}
+
+.file-upload-area:hover {
+    border-color: var(--blue);
+}
+
+.file-upload-area input[type="file"] {
+    display: none;
+}
+
+.file-upload-area label {
+    cursor: pointer;
+    color: var(--blue);
+    font-weight: 500;
+}
+
+/* ---------- Loading ---------- */
+
+.spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid var(--light-grey);
+    border-top-color: var(--blue);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.loading-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.85);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.loading-overlay.active {
+    display: flex;
+}
+
+.loading-overlay .spinner {
+    width: 40px;
+    height: 40px;
+}
+
+/* ---------- Alerts ---------- */
+
+.alert {
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.alert-error {
+    background: #ffe0e3;
+    color: #c0392b;
+    border: 1px solid #e94560;
+}
+
+.alert-success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid var(--green);
+}
+
+.alert-info {
+    background: #e3f0ff;
+    color: var(--navy);
+    border: 1px solid var(--blue);
+}
+
+/* ---------- Empty States ---------- */
+
+.empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--mid-grey);
+}
+
+.empty-state h3 {
+    margin-bottom: 0.5rem;
+    color: var(--text);
+}
+
+.empty-state p {
+    margin-bottom: 1rem;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .summary-bar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-tab {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.85rem;
+    }
+
+    .report-criterion-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .btn-group {
+        flex-direction: column;
+    }
+}
