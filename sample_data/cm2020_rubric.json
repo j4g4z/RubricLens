@@ -1,0 +1,154 @@
+{
+  "title": "CM2020 Software Project \u2014 Final Assessment",
+  "total_marks": 70,
+  "criteria": [
+    {
+      "name": "Code solves challenges presented in aims/objectives",
+      "max_marks": 4,
+      "descriptors": [
+        {"level": 1, "text": "Code does not address the stated aims or objectives"},
+        {"level": 2, "text": "Code partially addresses some aims with significant gaps"},
+        {"level": 3, "text": "Code addresses most aims and objectives effectively"},
+        {"level": 4, "text": "Code fully addresses all aims and objectives with clear solutions"}
+      ]
+    },
+    {
+      "name": "Iterative design",
+      "max_marks": 4,
+      "descriptors": [
+        {"level": 1, "text": "No evidence of iterative design process"},
+        {"level": 2, "text": "Some evidence of iteration but not systematic"},
+        {"level": 3, "text": "Clear evidence of systematic iterative design with improvements"},
+        {"level": 4, "text": "Excellent iterative design with well-documented changes driven by evaluation"}
+      ]
+    },
+    {
+      "name": "Approach is fit for purpose without drastic oversights",
+      "max_marks": 4,
+      "descriptors": [
+        {"level": 1, "text": "Approach has fundamental flaws or major oversights"},
+        {"level": 2, "text": "Approach is mostly sound but has notable gaps"},
+        {"level": 3, "text": "Approach is well-suited to the problem with minor limitations"},
+        {"level": 4, "text": "Approach is excellently matched to the problem with no significant oversights"}
+      ]
+    },
+    {
+      "name": "Elegance/aesthetics/readability of code",
+      "max_marks": 2,
+      "descriptors": [
+        {"level": 1, "text": "Code is poorly formatted, hard to read, inconsistent style"},
+        {"level": 2, "text": "Code is clean, well-formatted, readable with consistent style and naming"}
+      ]
+    },
+    {
+      "name": "Sensible approach to structure",
+      "max_marks": 2,
+      "descriptors": [
+        {"level": 1, "text": "Files and code are disorganised with no clear structure"},
+        {"level": 2, "text": "Sensible file structure with logical separation of concerns"}
+      ]
+    },
+    {
+      "name": "Evidence of collaboration and team work",
+      "max_marks": 4,
+      "descriptors": [
+        {"level": 1, "text": "No evidence of collaboration or external resource use"},
+        {"level": 2, "text": "Some engagement with external resources"},
+        {"level": 3, "text": "Good engagement with external resources, peer review, and discussion"},
+        {"level": 4, "text": "Excellent evidence of collaboration, peer review, and wide resource utilisation"}
+      ]
+    },
+    {
+      "name": "Evidence of milestones and reflective updates",
+      "max_marks": 2,
+      "descriptors": [
+        {"level": 1, "text": "No milestones or reflective updates evident"},
+        {"level": 2, "text": "Clear milestones with reflective updates such as Gantt charts and resource allocation"}
+      ]
+    },
+    {
+      "name": "Difficulty of technical challenge",
+      "max_marks": 4,
+      "descriptors": [
+        {"level": 1, "text": "Very basic technical challenge with minimal complexity"},
+        {"level": 2, "text": "Moderate technical challenge"},
+        {"level": 3, "text": "Significant technical challenge requiring advanced skills"},
+        {"level": 4, "text": "Highly ambitious technical challenge pushing boundaries"}
+      ]
+    },
+    {
+      "name": "Novelty of technical challenge",
+      "max_marks": 4,
+      "descriptors": [
+        {"level": 1, "text": "No novel aspects; entirely conventional approach"},
+        {"level": 2, "text": "Some novel elements in the approach"},
+        {"level": 3, "text": "Notable novelty in approach or application domain"},
+        {"level": 4, "text": "Highly novel and original technical contribution"}
+      ]
+    },
+    {
+      "name": "All parts of the system working",
+      "max_marks": 2,
+      "descriptors": [
+        {"level": 1, "text": "Major parts of the system are broken or non-functional"},
+        {"level": 2, "text": "All parts of the system are working as intended"}
+      ]
+    },
+    {
+      "name": "UI evaluation",
+      "max_marks": 1,
+      "descriptors": [
+        {"level": 1, "text": "No UI evaluation or assessment conducted"},
+        {"level": 1, "text": "UI evaluation conducted with clear findings"}
+      ]
+    },
+    {
+      "name": "Well documented tests",
+      "max_marks": 1,
+      "descriptors": [
+        {"level": 1, "text": "Tests are not documented or are poorly described"},
+        {"level": 1, "text": "Tests are well documented with clear descriptions"}
+      ]
+    },
+    {
+      "name": "Effective error handling",
+      "max_marks": 1,
+      "descriptors": [
+        {"level": 1, "text": "No error handling or crashes on invalid input"},
+        {"level": 1, "text": "Effective error handling with graceful degradation"}
+      ]
+    },
+    {
+      "name": "Systematic testing regime",
+      "max_marks": 1,
+      "descriptors": [
+        {"level": 1, "text": "No systematic testing approach"},
+        {"level": 1, "text": "Systematic testing regime with appropriate test cases designed"}
+      ]
+    },
+    {
+      "name": "Justification of testing methods",
+      "max_marks": 1,
+      "descriptors": [
+        {"level": 1, "text": "Testing methods not justified"},
+        {"level": 1, "text": "Testing methods clearly justified with rationale"}
+      ]
+    },
+    {
+      "name": "User evaluation \u2014 formative (representative stakeholders)",
+      "max_marks": 2,
+      "descriptors": [
+        {"level": 1, "text": "No formative user evaluation conducted"},
+        {"level": 2, "text": "Formative evaluation with representative stakeholders providing actionable feedback"}
+      ]
+    },
+    {
+      "name": "User evaluation \u2014 summative (representative stakeholders)",
+      "max_marks": 1,
+      "descriptors": [
+        {"level": 1, "text": "No summative user evaluation conducted"},
+        {"level": 1, "text": "Summative evaluation conducted measuring outcomes against goals"}
+      ]
+    }
+  ]
+}

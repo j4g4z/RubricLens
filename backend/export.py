@@ -7,6 +7,24 @@ from fpdf import FPDF
 EXPORTS_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "exports")
 
 
+def _sanitize_for_pdf(text: str) -> str:
+    """Replace Unicode characters unsupported by Helvetica with ASCII equivalents."""
+    replacements = {
+        "\u2014": "-",   # em dash
+        "\u2013": "-",   # en dash
+        "\u2018": "'",   # left single quote
+        "\u2019": "'",   # right single quote
+        "\u201c": '"',   # left double quote
+        "\u201d": '"',   # right double quote
+        "\u2026": "...", # ellipsis
+        "\u00a0": " ",   # non-breaking space
+    }
+    for char, replacement in replacements.items():
+        text = text.replace(char, replacement)
+    # Fallback: replace any remaining non-latin1 chars
+    return text.encode("latin-1", errors="replace").decode("latin-1")
+
+
 def ensure_exports_dir():
     """Create exports directory if it doesn't exist."""
     os.makedirs(EXPORTS_DIR, exist_ok=True)
@@ -146,6 +164,18 @@ def export_pdf(report: dict, rubric_title: str, submission_title: str) -> bytes:
     summary = report["summary"]
     items = report["items"]
     date_str = datetime.now().strftime("%Y-%m-%d %H:%M")
+
+    # Sanitize all text for PDF compatibility
+    rubric_title = _sanitize_for_pdf(rubric_title)
+    submission_title = _sanitize_for_pdf(submission_title)
+    for item in items:
+        for key in ("criterion_name", "rationale", "next_action"):
+            if key in item:
+                item[key] = _sanitize_for_pdf(item[key])
+    for p in summary.get("top_priorities", []):
+        for key in ("criterion_name", "next_action"):
+            if key in p:
+                p[key] = _sanitize_for_pdf(p[key])
 
     pdf = ReportPDF()
     pdf.alias_nb_pages()
