@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RubricLens</title>
+    <link rel="stylesheet" href="/frontend/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="app-header">
+        <div>
+            <h1>RubricLens</h1>
+            <span class="tagline">Rubric-aligned draft self-evaluation</span>
+        </div>
+    </header>
+
+    <!-- Loading overlay -->
+    <div id="loading-overlay" class="loading-overlay" role="status" aria-label="Loading">
+        <div class="spinner"></div>
+        <p id="loading-message">Processing...</p>
+    </div>
+
+    <div class="container">
+        <!-- Navigation tabs -->
+        <nav class="nav-tabs" role="tablist" aria-label="Main navigation">
+            <button class="nav-tab active" data-view="rubrics" role="tab" aria-selected="true">Rubrics</button>
+            <button class="nav-tab" data-view="draft" role="tab" aria-selected="false">Draft Input</button>
+            <button class="nav-tab" data-view="report" role="tab" aria-selected="false">Report</button>
+        </nav>
+
+        <!-- Alert area -->
+        <div id="alert-area" aria-live="polite"></div>
+
+        <!-- ============ RUBRICS VIEW ============ -->
+        <section id="view-rubrics" class="view active" role="tabpanel" aria-label="Rubrics">
+            <div class="btn-group" style="margin-bottom: 1rem;">
+                <button class="btn btn-primary" id="btn-new-rubric">Create New Rubric</button>
+                <button class="btn btn-success" id="btn-demo-rubric">Load Demo Rubric (CM2020)</button>
+                <label class="btn btn-secondary" for="import-rubric-file">Import Rubric (JSON)
+                    <input type="file" id="import-rubric-file" accept=".json" style="display:none;">
+                </label>
+            </div>
+
+            <div id="rubric-list"></div>
+
+            <!-- Rubric Editor (hidden by default) -->
+            <div id="rubric-editor" class="card" style="display:none;">
+                <h2 id="rubric-editor-title">New Rubric</h2>
+                <div class="form-group">
+                    <label class="form-label" for="rubric-title">Rubric Title</label>
+                    <input type="text" id="rubric-title" class="form-input" placeholder="e.g., CM2020 Final Assessment">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="rubric-marks">Total Marks</label>
+                    <input type="number" id="rubric-marks" class="form-input" value="0" min="0" step="1">
+                </div>
+
+                <h3 style="margin: 1rem 0 0.5rem;">Criteria</h3>
+                <div id="criteria-list"></div>
+                <button class="btn btn-outline btn-sm" id="btn-add-criterion">+ Add Criterion</button>
+
+                <div class="btn-group" style="margin-top: 1rem;">
+                    <button class="btn btn-primary" id="btn-save-rubric">Save Rubric</button>
+                    <button class="btn btn-secondary" id="btn-cancel-rubric">Cancel</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ DRAFT INPUT VIEW ============ -->
+        <section id="view-draft" class="view" role="tabpanel" aria-label="Draft Input">
+            <div class="card">
+                <h2>Submit Your Draft</h2>
+
+                <div class="form-group">
+                    <label class="form-label" for="draft-rubric-select">Select Rubric</label>
+                    <select id="draft-rubric-select" class="form-select">
+                        <option value="">-- Select a rubric --</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="draft-title">Draft Title</label>
+                    <input type="text" id="draft-title" class="form-input" placeholder="e.g., My Coursework Draft" value="Untitled Draft">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="draft-text">Paste Your Draft Text</label>
+                    <textarea id="draft-text" class="form-textarea" placeholder="Paste your coursework draft here..."></textarea>
+                    <div class="word-count" id="word-count" aria-live="polite">0 words</div>
+                </div>
+
+                <div class="file-upload-area">
+                    <label for="draft-file">Or upload a .docx file</label>
+                    <input type="file" id="draft-file" accept=".docx">
+                    <p id="file-name" style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--mid-grey);"></p>
+                </div>
+
+                <button class="btn btn-primary" id="btn-analyse" disabled>Analyse Draft</button>
+            </div>
+
+            <!-- Submissions list -->
+            <h3 style="margin: 1.5rem 0 0.75rem;">Previous Submissions</h3>
+            <div id="submissions-list"></div>
+        </section>
+
+        <!-- ============ REPORT VIEW ============ -->
+        <section id="view-report" class="view" role="tabpanel" aria-label="Report">
+            <div id="report-empty" class="empty-state">
+                <h3>No Report Available</h3>
+                <p>Submit and analyse a draft to see your coverage report.</p>
+            </div>
+
+            <div id="report-content" style="display:none;">
+                <!-- Summary bar -->
+                <div class="summary-bar" id="summary-bar"></div>
+
+                <!-- Top priorities -->
+                <div class="priorities-box" id="priorities-box" style="display:none;">
+                    <h3>Top Priorities</h3>
+                    <div id="priorities-list"></div>
+                </div>
+
+                <!-- Export buttons -->
+                <div class="btn-group" style="margin-bottom: 1.5rem;">
+                    <button class="btn btn-primary" id="btn-export-md">Export Markdown</button>
+                    <button class="btn btn-primary" id="btn-export-pdf">Export PDF</button>
+                </div>
+
+                <!-- Criterion cards -->
+                <div id="report-criteria"></div>
+            </div>
+        </section>
+    </div>
+
+    <script src="/frontend/app.js"></script>
+</body>
+</html>
